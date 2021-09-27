@@ -1,0 +1,21 @@
+label {
+    font-weight: bold;
+}
+
+input {
+    margin-bottom: 1em;
+}
+
+.errormessage {
+    color: red;
+    font-size: 0.5em;
+}
+
+form {
+    width: 33%;
+}
+
+.success {
+    font-size: 2em;
+    text-align: center;
+}
