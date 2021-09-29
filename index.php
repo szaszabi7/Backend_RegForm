@@ -6,6 +6,7 @@ $emailHiba = false;
 $emailHibaUzenet = '';
 $jelszoHiba = false;
 $jelszoHibaUzenet = '';
+$sikeresReg = false;
 $sikeresRegisztracioUzenet = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -57,7 +58,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $password2 = htmlspecialchars($_POST['password2'], ENT_QUOTES);
     }
 
-    if (!$userHiba && !$emailHiba && !$jelszoHiba) $sikeresRegisztracioUzenet = 'Sikeres regisztráció!';
+    if (!$userHiba && !$emailHiba && !$jelszoHiba) {
+     $sikeresRegisztracioUzenet = 'Sikeres regisztráció!';
+     $sikeresReg = true;
+    }
     else $username = $email = $password = $password2 = "";
 }
 
@@ -71,6 +75,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
 </head>
 <body>
+    <?php if (!$sikeresReg) {?>
     <form method="POST">
         <div>
             <label>
@@ -103,6 +108,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type='submit' value='Regisztráció'>
         </div>
     </form>
+    <?php } else { ?>
     <p class='success'><?php echo $sikeresRegisztracioUzenet; ?></p>
+    <?php } ?>
 </body>
 </html>
